@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.fariha.nestedrecyclerview.databinding.BannerItemBinding
 import com.fariha.nestedrecyclerview.databinding.EachItemBinding
@@ -35,6 +36,9 @@ class MainAdapter(private val dataItemList: List<DataItem>) :
         }
 
         fun bindBestSellerRecyclerView(recyclerItemList: List<RecyclerItem>) {
+            //better scrolling
+            val snapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(binding.childRecyclerView)
             val adapter = ChildAdapter(DataItemType.BEST_SELLER, recyclerItemList)
             binding.childRecyclerView.adapter = adapter
         }
