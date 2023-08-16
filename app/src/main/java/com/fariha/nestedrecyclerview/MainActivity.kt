@@ -7,8 +7,8 @@ import com.fariha.nestedrecyclerview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
-    private lateinit var mList  : ArrayList<DataItem>
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var mList: ArrayList<DataItem>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding.mainRecyclerView.adapter = adapter
     }
 
-    private fun prepareData(){
+    private fun prepareData() {
         // best seller
         val bestSellerList = ArrayList<RecyclerItem>()
         bestSellerList.add(RecyclerItem(R.drawable.bags, "Up to 20% off"))
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         mList.add(DataItem(DataItemType.BANNER, Banner(R.drawable.tv_offer)))
         mList.add(DataItem(DataItemType.CLOTHING, clothingList))
         mList.add(DataItem(DataItemType.BANNER, Banner(R.drawable.nikon_canon_offer)))
-        mList.add(DataItem(DataItemType.BEST_SELLER,bestSellerList.asReversed()))
+        mList.add(DataItem(DataItemType.BEST_SELLER, bestSellerList.asReversed()))
         mList.add(DataItem(DataItemType.BANNER, Banner(R.drawable.offer_shoping)))
     }
 }

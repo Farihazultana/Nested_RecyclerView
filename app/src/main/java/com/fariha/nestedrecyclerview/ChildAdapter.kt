@@ -6,17 +6,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fariha.nestedrecyclerview.databinding.BestSellerLayoutBinding
 import com.fariha.nestedrecyclerview.databinding.ClothingLayoutBinding
 
-class ChildAdapter (private val viewType: Int, private val recyclerItemList: List<RecyclerItem>) :
+class ChildAdapter(private val viewType: Int, private val recyclerItemList: List<RecyclerItem>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    inner class BestSellerViewHolder(private val binding: BestSellerLayoutBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bindBestSellerView(recyclerItem: RecyclerItem){
+    inner class BestSellerViewHolder(private val binding: BestSellerLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bindBestSellerView(recyclerItem: RecyclerItem) {
             binding.igBestSeller.setImageResource(recyclerItem.image)
             binding.tvBestSeller.text = recyclerItem.offer
         }
     }
 
-    inner class ClothingViewHolder(private val binding : ClothingLayoutBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ClothingViewHolder(private val binding: ClothingLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bindClothingView(recyclerItem: RecyclerItem) {
             binding.igClothing.setImageResource(recyclerItem.image)
@@ -30,14 +32,22 @@ class ChildAdapter (private val viewType: Int, private val recyclerItemList: Lis
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when(viewType){
+        return when (viewType) {
             DataItemType.BEST_SELLER -> {
-                val binding = BestSellerLayoutBinding.inflate(LayoutInflater.from(parent.context),parent, false)
+                val binding = BestSellerLayoutBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
                 BestSellerViewHolder(binding)
             }
 
-            else ->{
-                val binding = ClothingLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            else -> {
+                val binding = ClothingLayoutBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
                 ClothingViewHolder(binding)
             }
         }
@@ -48,11 +58,12 @@ class ChildAdapter (private val viewType: Int, private val recyclerItemList: Lis
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(holder){
-            is BestSellerViewHolder ->{
+        when (holder) {
+            is BestSellerViewHolder -> {
                 holder.bindBestSellerView(recyclerItemList[position])
             }
-            is ClothingViewHolder->{
+
+            is ClothingViewHolder -> {
                 holder.bindClothingView(recyclerItemList[position])
             }
         }
