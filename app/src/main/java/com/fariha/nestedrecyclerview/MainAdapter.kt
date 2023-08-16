@@ -25,10 +25,12 @@ class MainAdapter(private val dataItemList: List<DataItem>) : RecyclerView.Adapt
             binding.childRecyclerView.layoutManager = LinearLayoutManager(binding.root.context, RecyclerView.HORIZONTAL, false)
         }
         fun bindClothingRecyclerView(recyclerItemList: List<RecyclerItem>){
-            binding.childRecyclerView.setHasFixedSize(true)
+            val adapter = ChildAdapter(DataItemType.CLOTHING, recyclerItemList)
+            binding.childRecyclerView.adapter = adapter
         }
         fun bindBestSellerRecyclerView(recyclerItemList: List<RecyclerItem>){
-
+            val adapter = ChildAdapter(DataItemType.BEST_SELLER, recyclerItemList)
+            binding.childRecyclerView.adapter = adapter
         }
     }
 
